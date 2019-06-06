@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=swap');
+
+
+body {
+    /* background-color: bisque; */
+    background-image: url(http://www.toca-ch.com/data/walls/18/21805265.jpg);
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: 'Indie Flower', cursive;
+    text-align: center;
+    overflow-y: auto;
+    overflow-x: hidden;
+    font-size: 25px;
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Indie Flower', cursive;
+    
+
+}
+
+.formsContainer {
+    background-color: beige;
+    border-radius: 20px;
+    text-align: center;
+    opacity: 0.7;
+}
+
+.itemsContainer {
+    background-color: royalblue;
+    width: 500px;
+    transform: translateX(98%);
+    border-radius: 20px;
+}
+
+.button {
+    border-radius: 25px;
+    
+}
+
+.button:hover {
+    background-color: red;
+    color: aliceblue;
+}

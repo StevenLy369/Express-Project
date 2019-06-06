@@ -3,6 +3,7 @@ import { ApiService} from './api.service';
 
 
 
+
 @Component({
   selector: 'root',
   templateUrl: './app.component.html',
@@ -11,28 +12,43 @@ import { ApiService} from './api.service';
 export class AppComponent {
   title = 'express-project';
   items: any;
+  shouldBeHidden: boolean = true;
+  
 
   constructor(private apiService: ApiService) {
     this.apiService.getItems().subscribe(response => {
       this.items = response;
     });
   }
+  
 
-  addNewItem(newItemsId, newItemsName, newItemsPrice, newItemsQuanity) {
-    this.apiService.addItems(newItemsId, newItemsName, newItemsPrice
-      ,newItemsQuanity   ).subscribe(response => {
+
+  toggleForm(index) {
+    this.items[index].beingUpdated = !this.items[index].beingUpdated;
+    console.log(this.items[index]);
+    
+  }
+ 
+  addNewItem(form) {
+    this.apiService.addItems({
+      ...form.value,
+      product: form.value.product === ""? false: form.value.product,
+      price: form.value.price ===""? false: form.value.price,
+      quantity: form.value.quantity ===""? false: form.value.quantity
+    }).subscribe(response => {
       this.items = response;
     });
   }
 
-  deleteItem(product){
-    this.apiService.deleteItem(product).subscribe(response => {
+  deleteAnItem(id){
+    this.apiService.deleteItem(id).subscribe(response => {
       this.items = response;
-    })
+    });
+    // console.log(id);
   }
 
-  updateItem(newProduct, oldProduct) {
-    this.apiService.updateItem(newProduct, oldProduct).subscribe(response => {
+  updateAnItem(item) {
+    this.apiService.updateItem(item).subscribe(response => {
       this.items = response;
     })
   }
